@@ -1,1 +1,3 @@
 streamlit-sortables
+scipy
+scikit-learn
