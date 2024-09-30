@@ -40,3 +40,5 @@ def algorithm():
 
         st.info("Now that we have defined the *k*-NN algorithm, let's see how we can implement it in Python." +
                 " To do so, go to the implementation tab.")
+
+        
