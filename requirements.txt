@@ -1,3 +1,4 @@
 streamlit-sortables
 scipy
 scikit-learn
+matplotlib

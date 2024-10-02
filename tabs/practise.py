@@ -107,6 +107,11 @@ def practise():
             df_data = pd.DataFrame(X, columns=[f"Feature {i}" for i in range(int(n_features))])
             df_data = pd.concat([df_data, pd.Series(y, name="Target")], axis=1)
             df_data = df_data.round(2)
+            
+            letters = ['A', 'B', 'C', 'D', 'E', 'F', 'G', 'H', 'I', 'J']
+
+            for i in range(df_data.shape[0]):
+                df_data.iloc[i, -1] = letters[df_data.iloc[i, -1]]
 
             df_instance = pd.DataFrame(df_data.iloc[-1, :].values.reshape(1, -1), columns=df_data.columns)
             y = df_data.iloc[-1, -1]
@@ -130,7 +135,7 @@ def practise():
         st.write("**Step 1. Generate the dataset**")
 
         with st.form(key="generate_dataset"):
-            n_features = st.number_input("Number of features:", min_value=2, value='min', step=1, key="columns")
+            n_features = st.number_input("Number of features:", min_value=2, value='min', max_value=6, step=1, key="columns")
             n_classes = st.number_input("Number of classes:", min_value=2, value='min', max_value=10, step=1, key="classes")
             submit_button = st.form_submit_button("Generate dataset")
 
@@ -271,6 +276,9 @@ def practise():
             distance_9 = st.text_input("Enter the Euclidean distance between X8 and T0:", value="0.0", autocomplete=None, key="p_distance_9", on_change=check_distance_9(), disabled=st.session_state.p_is_disabled_9)
             distance_10 = st.text_input("Enter the Euclidean distance between X9 and T0:", value="0.0", autocomplete=None, key="p_distance_10", on_change=check_distance_10(), disabled=st.session_state.p_is_disabled_10)
 
+        # To remove
+        st.write(distances)
+
         try:
             if (float(str(distance_1).replace(",", ".")) == distances[0] and
                 float(str(distance_2).replace(",", ".")) == distances[1] and
@@ -317,6 +325,9 @@ def practise():
 
                 sort_distances = np.sort(distances)
 
+                # To remove
+                st.write(sort_distances)
+
                 try:
 
                     if (distances[user_inputs.index(0)] == sort_distances[0] and
@@ -344,11 +355,12 @@ def practise():
 
                         st.write("**Step 5. Assign the new instance to the class that appears most frequently among the *k* instances**")
 
-                        k_options = list(range(n_classes))
+                        letters = ['A', 'B', 'C', 'D', 'E', 'F', 'G', 'H', 'I', 'J']
+
+                        k_options = letters[:n_classes]
                         k_options = [''] + k_options
 
                         k_instances = distance_data.head(k).iloc[:, -1].values
-                        k_instances = k_instances.astype(int)
                         predicted_class = pd.DataFrame(k_instances).value_counts().idxmax()
 
                         selected_options = st.selectbox('Select answer:', k_options)
@@ -356,6 +368,10 @@ def practise():
                         if selected_options == predicted_class[0]:
                             st.success("Well done! You have adequately implemented the *k*-NN algorithm!")
                             st.balloons()
+
+                        elif selected_options != '':
+                            st.error("Incorrect answer. Please, try again.")
+                            
                 except Exception as e:
                     print(e)
                     pass

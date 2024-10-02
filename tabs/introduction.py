@@ -4,6 +4,8 @@ import pandas as pd
 from streamlit_sortables import sort_items
 from scipy.spatial import distance
 
+import matplotlib.pyplot as plt
+
 def introduction():
     
     if 'distance_1' not in st.session_state:
@@ -289,7 +291,7 @@ def introduction():
                 
                 st.write("By contrast, if the resulting distance is small, it means that the instances are similar, and thus it is probable that the class of the instance we want to predict is the same as the class of the training instance." +
                         " From the resulting distances, it seems that the instance we want to predict (T0) is very similar to the training instance X0. However, it is very dissimilar to the training instance X5." +
-                        "To better highlight this, we can create a table with the resulting distances ordered from the smallest to the largest distance. Can you do it for me?")
+                        " To better highlight this, we can create a table with the resulting distances ordered from the smallest to the largest distance. Can you do it for me?")
             
                 data = ["d(X0, T0) = " + str(distances[0]),
                         "d(X1, T0) = " + str(distances[1]),
@@ -319,7 +321,7 @@ def introduction():
                     st.write(df_final_distances)
 
                     st.write("Now that we have ordered the distances based on the similarity between the instances, we can proceed classification of the test instance (T0)." +
-                        "For this, we will need to define the value of *k*, which is the number of nearest neighbours we will consider to predict the class of the test instance." +
+                        " For this, we will need to define the value of *k*, which is the number of nearest neighbours we will consider to predict the class of the test instance." +
                         " For this example, we will consider *k* = 3. Thus, we will consider the classes of the three nearest neighbours to predict the class of the test." +
                         " Can you do it for me?")
 
@@ -335,12 +337,38 @@ def introduction():
                         st.success("Well done! You have just predicted the class of the test instance (T0) through the " +
                                 " *k*-NN algorithm. It was easy, wasn't it?")
                         
+                        st.write("In this case, you know that **the test instance (T0) belongs to the class Apple**, because you have identified that T0 is very similar to the training instances X0, X1, and X2. Also, because I said so." +
+                                   " However, to adequately check whether the prediction is correct, we would need to compare the predicted class with the actual class of the test instance.")
+                        
+                        st.write("That said, if we do not have the actual class of the test instance, we can graphical represent the training instances and the test instance in a scatter plot (as represented below)")
+                        
+                        fig, ax = plt.subplots()
+
+                        df_apple = df_data[df_data['Class'] == 'Apple']
+                        df_banana = df_data[df_data['Class'] == 'Banana']
+
+                        ax.scatter(df_apple['Weight [grams]'], df_apple['Diameter [millimeters]'], color='red', label='Apple')
+                        ax.scatter(df_banana['Weight [grams]'], df_banana['Diameter [millimeters]'], color='#C49102', label='Banana')
+
+                        ax.scatter(df_instance['Weight [grams]'], df_instance['Diameter [millimeters]'], color='blue', label='????')
+
+                        ax.set_xlabel('Weight [grams]')
+                        ax.set_ylabel('Diameter [millimeters]')
+
+                        ax.legend(frameon=False, loc='upper left')
+
+                        # Display the plot in the app
+                        st.pyplot(fig)
+
+                        st.write("It can be observed that the test instance with class unknown (represented in blue) is very similar to the training instances with class Apple (represented in red)." + 
+                                 "Thus, we can be confident that the test instance belongs to the class Apple.")
+                        
                         st.write("Now that you have understood how the *k*-NN algorithm works, you can proceed to the next tab " +
                                 "to define the algorithm of the *k*-NN algorithm. Before that, here you have some tips when " +
                                 " implementing the *k*-NN algorithm:")
                         
                         st.markdown("""
-                                        - **Selection of *k***. The selection of the value of *k* is crucial for the performance of the *k*-NN algorithm. Even though we have define it at a later stage, the tirth is that the selection of the value of *k* is usually defined in the initial stages.
+                                        - **Selection of *k***. The selection of the value of *k* is crucial for the performance of the *k*-NN algorithm. Even though we have define it at a later stage, the selection of the value of *k* is usually defined in the initial stages.
                                         - **Distance metric**. The selection of the distance metric is also crucial for the performance of the *k*-NN algorithm. The Euclidean distance is the most common distance metric used in the *k*-NN algorithm. However, other distance metrics can be used depending on the problem at hand.
                                         - **Feature scaling**. The *k*-NN algorithm is sensitive to the scale of the features. Thus, it is recommended to scale the features before applying the *k*-NN algorithm.
                                         - **Curse of dimensionality**. The *k*-NN algorithm is sensitive to the curse of dimensionality. Thus, it is recommended to reduce the dimensionality of the dataset before applying the *k*-NN algorithm.

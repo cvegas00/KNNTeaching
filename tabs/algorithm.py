@@ -8,11 +8,11 @@ def algorithm():
              "place the following elements in the correct order:")
     
     algorithm_elements = [
-        "Select the *k* instances with the smallest distances",
+        "Select the k instances with the smallest distances",
         "Calculate the distance between the new instance and all instances in the training set",
         "For each new instance in the test set:",
         "Return the classes assigned to the new instances",
-        "Assign the new instance to the class that appears most frequently among the *k* instances",
+        "Assign the new instance to the class that appears most frequently among the k instances",
         "Sort the distances in ascending order",
         
     ]
@@ -23,8 +23,8 @@ def algorithm():
         sorted_items[0] == "For each new instance in the test set:" and
         sorted_items[1] == "Calculate the distance between the new instance and all instances in the training set" and
         sorted_items[2] == "Sort the distances in ascending order" and
-        sorted_items[3] == "Select the *k* instances with the smallest distances" and
-        sorted_items[4] == "Assign the new instance to the class that appears most frequently among the *k* instances" and
+        sorted_items[3] == "Select the k instances with the smallest distances" and
+        sorted_items[4] == "Assign the new instance to the class that appears most frequently among the k instances" and
         sorted_items[5] == "Return the classes assigned to the new instances"
         ):
         
@@ -39,6 +39,6 @@ def algorithm():
         st.write("2. Return the classes assigned to the new instances")
 
         st.info("Now that we have defined the *k*-NN algorithm, let's see how we can implement it in Python." +
-                " To do so, go to the implementation tab.")
+                " To do so, go to the *Step-by-step implementation* tab.")
 
         
