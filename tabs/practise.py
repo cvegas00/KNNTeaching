@@ -276,9 +276,6 @@ def practise():
             distance_9 = st.text_input("Enter the Euclidean distance between X8 and T0:", value="0.0", autocomplete=None, key="p_distance_9", on_change=check_distance_9(), disabled=st.session_state.p_is_disabled_9)
             distance_10 = st.text_input("Enter the Euclidean distance between X9 and T0:", value="0.0", autocomplete=None, key="p_distance_10", on_change=check_distance_10(), disabled=st.session_state.p_is_disabled_10)
 
-        # To remove
-        st.write(distances)
-
         try:
             if (float(str(distance_1).replace(",", ".")) == distances[0] and
                 float(str(distance_2).replace(",", ".")) == distances[1] and
@@ -324,9 +321,6 @@ def practise():
                             st.error("Please, make sure that you have entered valid order index.")
 
                 sort_distances = np.sort(distances)
-
-                # To remove
-                st.write(sort_distances)
 
                 try:
 
