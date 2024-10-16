@@ -383,5 +383,6 @@ def introduction():
                                         - **Computational cost**. The *k*-NN algorithm is computationally expensive, as it requires to calculate the distance between the instance we want to predict and all the instances in the training dataset. Thus, it is recommended to use the *k*-NN algorithm for small datasets.
                                     """)
                         
-        except:
+        except Exception as e:
             st.error("Please, make sure that you have entered valid numbers.")
+            print(e)
