@@ -323,6 +323,7 @@ def practise():
                 sort_distances = np.sort(distances)
 
                 st.write(sort_distances)
+                st.write(distances)
 
                 try:
 
