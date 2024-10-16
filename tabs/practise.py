@@ -324,6 +324,21 @@ def practise():
 
                 st.write(sort_distances)
                 st.write(distances)
+                st.write(pd.DataFrame([user_inputs.index(0), user_inputs.index(1), user_inputs.index(2),
+                         user_inputs.index(3), user_inputs.index(4), user_inputs.index(5),
+                         user_inputs.index(6), user_inputs.index(7), user_inputs.index(8),
+                         user_inputs.index(9)]))
+                st.write(distances[user_inputs.index(0)] == sort_distances[0])
+                st.write(distances[user_inputs.index(1)] == sort_distances[1])
+                st.write(distances[user_inputs.index(2)] == sort_distances[2])
+                st.write(distances[user_inputs.index(3)] == sort_distances[3])
+                st.write(distances[user_inputs.index(4)] == sort_distances[4])
+                st.write(distances[user_inputs.index(5)] == sort_distances[5])
+                st.write(distances[user_inputs.index(6)] == sort_distances[6])
+                st.write(distances[user_inputs.index(7)] == sort_distances[7])
+                st.write(distances[user_inputs.index(8)] == sort_distances[8])
+                st.write(distances[user_inputs.index(9)] == sort_distances[9])
+                
 
                 try:
 
