@@ -317,13 +317,21 @@ def introduction():
                         'Class': ['Apple', 'Apple', 'Apple', 'Banana', 'Banana', 'Banana']
                     }
 
-                    df_final_distances = pd.DataFrame(final_distances)
-                    st.write(df_final_distances)
+                    st.write("Now that we have ordered the distances based on the similarity between the instances, it is time to consider the hyperparameter *k*." +
+                             " *k* represents the number of nearest neighbors to include in the prediction. Let's see a couple of examples for better understanding:")
 
-                    st.write("Now that we have ordered the distances based on the similarity between the instances, we can proceed classification of the test instance (T0)." +
+                    st.image("./imgs/k_1.svg", caption="Figure 3: Predicted class when k is equal to 3.")       
+
+                    st.image("./imgs/k_2.svg", caption="Figure 4: Predicted class when k is equal to 5.")
+
+                    st.write("Once understood the importance of *k*, we can proceed classification of the test instance (T0)." +      
                         " For this, we will need to define the value of *k*, which is the number of nearest neighbours we will consider to predict the class of the test instance." +
                         " For this example, we will consider *k* = 3. Thus, we will consider the classes of the three nearest neighbours to predict the class of the test." +
                         " Can you do it for me?")
+                    
+                    df_final_distances = pd.DataFrame(final_distances)
+                    df_final_distances = df_final_distances.sort_values(by='Value')
+                    st.write(df_final_distances)
 
                     options = ['', 'Banana', 'Apple']
                     selected_options = st.selectbox('Predicted class for T0:', options)
