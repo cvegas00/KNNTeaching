@@ -321,37 +321,20 @@ def practise():
                             st.error("Please, make sure that you have entered valid order index.")
 
                 sort_distances = np.sort(distances)
-
-                st.write(sort_distances)
-                st.write(distances)
-                st.write(pd.DataFrame([user_inputs.index(0), user_inputs.index(1), user_inputs.index(2),
-                         user_inputs.index(3), user_inputs.index(4), user_inputs.index(5),
-                         user_inputs.index(6), user_inputs.index(7), user_inputs.index(8),
-                         user_inputs.index(9)]))
-                st.write(distances[user_inputs.index(0)] == sort_distances[0])
-                st.write(distances[user_inputs.index(1)] == sort_distances[1])
-                st.write(distances[user_inputs.index(2)] == sort_distances[2])
-                st.write(distances[user_inputs.index(3)] == sort_distances[3])
-                st.write(distances[user_inputs.index(4)] == sort_distances[4])
-                st.write(distances[user_inputs.index(5)] == sort_distances[5])
-                st.write(distances[user_inputs.index(6)] == sort_distances[6])
-                st.write(distances[user_inputs.index(7)] == sort_distances[7])
-                st.write(distances[user_inputs.index(8)] == sort_distances[8])
-                st.write(distances[user_inputs.index(9)] == sort_distances[9])
+                user_inputs_values = pd.DataFrame(user_inputs).iloc[:, 0].values
                 
-
                 try:
 
-                    if (distances[user_inputs.index(0)] == sort_distances[0] and
-                        distances[user_inputs.index(1)] == sort_distances[1] and
-                        distances[user_inputs.index(2)] == sort_distances[2] and
-                        distances[user_inputs.index(3)] == sort_distances[3] and
-                        distances[user_inputs.index(4)] == sort_distances[4] and
-                        distances[user_inputs.index(5)] == sort_distances[5] and
-                        distances[user_inputs.index(6)] == sort_distances[6] and
-                        distances[user_inputs.index(7)] == sort_distances[7] and
-                        distances[user_inputs.index(8)] == sort_distances[8] and
-                        distances[user_inputs.index(9)] == sort_distances[9]):
+                    if (distances[user_inputs_values[0]] == sort_distances[0] and
+                        distances[user_inputs_values[1]] == sort_distances[1] and
+                        distances[user_inputs_values[2]] == sort_distances[2] and
+                        distances[user_inputs_values[3]] == sort_distances[3] and
+                        distances[user_inputs_values[4]] == sort_distances[4] and
+                        distances[user_inputs_values[5]] == sort_distances[5] and
+                        distances[user_inputs_values[6]] == sort_distances[6] and
+                        distances[user_inputs_values[7]] == sort_distances[7] and
+                        distances[user_inputs_values[8]] == sort_distances[8] and
+                        distances[user_inputs_values[9]] == sort_distances[9]):
 
                         st.success("Well done! You have sorted the distances correctly.")
 
