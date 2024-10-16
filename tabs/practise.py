@@ -322,6 +322,8 @@ def practise():
 
                 sort_distances = np.sort(distances)
 
+                st.write(sort_distances)
+
                 try:
 
                     if (distances[user_inputs.index(0)] == sort_distances[0] and
