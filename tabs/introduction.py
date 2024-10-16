@@ -276,8 +276,8 @@ def introduction():
             distance_5 = st.text_input("Enter the Euclidean distance between X4 and T0:", value="0.0", autocomplete=None, key="distance_5", on_change=check_distance_5(), disabled=st.session_state.is_disabled_5)
             distance_6 = st.text_input("Enter the Euclidean distance between X5 and T0:", value="0.0", autocomplete=None, key="distance_6", on_change=check_distance_6(), disabled=st.session_state.is_disabled_6)
 
-        try:
-            if (float(str(distance_1).replace(",", ".")) == distances[0] and
+        #try:
+        if (float(str(distance_1).replace(",", ".")) == distances[0] and
                 float(str(distance_2).replace(",", ".")) == distances[1] and
                 float(str(distance_3).replace(",", ".")) == distances[2] and
                 float(str(distance_4).replace(",", ".")) == distances[3] and
@@ -383,6 +383,6 @@ def introduction():
                                         - **Computational cost**. The *k*-NN algorithm is computationally expensive, as it requires to calculate the distance between the instance we want to predict and all the instances in the training dataset. Thus, it is recommended to use the *k*-NN algorithm for small datasets.
                                     """)
                         
-        except Exception as e:
-            st.error("Please, make sure that you have entered valid numbers.")
-            print(e)
+        #except Exception as e:
+        #    st.error("Please, make sure that you have entered valid numbers.")
+        #    print(e)
