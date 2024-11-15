@@ -1,4 +1,7 @@
+numpy
 streamlit-sortables
 scipy
 scikit-learn
 matplotlib
+streamlit_ace
+psutil

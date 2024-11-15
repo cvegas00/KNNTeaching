@@ -64,7 +64,7 @@ def introduction():
              "where the main objective is to predict the categorical class labels of new instances based on past " +
              "observations. For instance, based on the following past observations:")
     
-    st.image("./imgs/introduction_1.svg", use_column_width=True, caption="Figure 1: Past observations.")
+    st.image("./imgs/introduction_1.svg", use_container_width=True, caption="Figure 1: Past observations.")
 
     st.write("Which would be the predicted class of the new instance?")
 
