@@ -148,17 +148,16 @@ def implementation():
 
             try:
                 if truncated_results == distances:
-                    st.session_state.step_1_completed = True
+                    st.session_state.step_1_completed = True    
+                else:
+                    st.session_state.step_1_completed = False
+                    st.session_state.step_2_completed = False
+                    st.session_state.step_3_completed = False
+                    st.session_state.step_4_completed = False
+
+                    st.error("The distances have **NOT** been calculated correctly. Please check your code and try again.")
             except:
                 pass
-                
-            else:
-                st.session_state.step_1_completed = False
-                st.session_state.step_2_completed = False
-                st.session_state.step_3_completed = False
-                st.session_state.step_4_completed = False
-
-                st.error("The distances have **NOT** been calculated correctly. Please check your code and try again.")
         else:
             st.session_state.step_1_completed = False
             st.session_state.step_2_completed = False
